@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -96,8 +97,7 @@ fun RowExample() {
 fun BoxExample() {
 
     Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
     ) {
 
         Box(
@@ -129,36 +129,102 @@ fun BoxExample() {
 @Preview(showSystemUi = true)
 fun ConstraintLayoutSample() {
 
+    ConstraintLayout {
+        val (greenBox, redBox, yellowBox, blackBox) = createRefs()
 
-    ConstraintLayout(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp)
+        Box(
+            modifier = Modifier
+                .width(100.dp)
+                .height(200.dp)
+                .background(Color.Green)
+                .constrainAs(greenBox) {
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                }
+        )
+        Box(
+            modifier = Modifier
+                .width(100.dp)
+                .height(200.dp)
+                .background(Color.Red)
+                .constrainAs(redBox) {
+                    top.linkTo(parent.top)
+                    start.linkTo(greenBox.end)
+                }
+        )
+//        Box(
+//            modifier = Modifier
+//                .width(100.dp)
+//                .height(200.dp)
+//                .background(Color.Yellow)
+//                .constrainAs(yellowBox){
+//                    top.linkTo(parent.top)
+//                    start.linkTo(redBox.end)
+//                }
+//        )
+//        Box(
+//            modifier = Modifier
+//                .width(100.dp)
+//                .height(200.dp)
+//                .background(Color.Black)
+//                .constrainAs(blackBox){
+//                    top.linkTo(parent.top)
+//                    start.linkTo(yellowBox.end)
+//                }
+//        )
 
-            .padding(top = 50.dp)
-            .background(Color.Gray)
-    ) {
+        Box(
+            modifier = Modifier
+                .width(100.dp)
+                .height(200.dp)
+                .background(Color.Black)
+                .constrainAs(blackBox) {
+                    top.linkTo(greenBox.bottom)
+                    start.linkTo(parent.start)
+                }
+        )
 
-        val (text1, text2, text3) = createRefs()
-
-        Text("Text 1", modifier = Modifier.constrainAs(text1) {
-            bottom.linkTo(parent.bottom, margin = 10.dp)
-            start.linkTo(parent.start, margin = 10.dp)
-        })
-
-        Text("Text 2", modifier = Modifier.constrainAs(text2) {
-            top.linkTo(parent.top)
-            bottom.linkTo(parent.bottom)
-            start.linkTo(parent.start)
-            end.linkTo(parent.end)
-
-        })
-        Text("Text 3", modifier = Modifier.constrainAs(text3) {
-            end.linkTo(parent.end, margin = 10.dp)
-            top.linkTo(parent.top, margin = 10.dp)
-        })
-
+        Box(
+            modifier = Modifier
+                .width(100.dp)
+                .height(200.dp)
+                .background(Color.Yellow)
+                .constrainAs(yellowBox){
+                    top.linkTo(redBox.bottom)
+                    start.linkTo(blackBox.end)
+                }
+        )
     }
+
+//    ConstraintLayout(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .height(200.dp)
+//
+//            .padding(top = 50.dp)
+//            .background(Color.Gray)
+//    ) {
+//
+//        val (text1, text2, text3) = createRefs()
+//
+//        Text("Text 1", modifier = Modifier.constrainAs(text1) {
+//            bottom.linkTo(parent.bottom, margin = 10.dp)
+//            start.linkTo(parent.start, margin = 10.dp)
+//        })
+//
+//        Text("Text 2", modifier = Modifier.constrainAs(text2) {
+//            top.linkTo(parent.top)
+//            bottom.linkTo(parent.bottom)
+//            start.linkTo(parent.start)
+//            end.linkTo(parent.end)
+//
+//        })
+//        Text("Text 3", modifier = Modifier.constrainAs(text3) {
+//            end.linkTo(parent.end, margin = 10.dp)
+//            top.linkTo(parent.top, margin = 10.dp)
+//        })
+//
+//    }
 
 //    ConstraintLayout {
 //

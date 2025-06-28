@@ -13,6 +13,7 @@ import com.example.jetpackcomposecourse.`10_States`.ColorBox
 import com.example.jetpackcomposecourse.`11_SnackBar`.SnackBarSample
 import com.example.jetpackcomposecourse.`12_Lists`.ColumnExample
 import com.example.jetpackcomposecourse.`12_Lists`.LazyColumnExample
+import com.example.jetpackcomposecourse.`13_Animations`.SimpleAnimation
 import com.example.jetpackcomposecourse.`3_CoreComponents`.ImageSample
 import com.example.jetpackcomposecourse.`3_CoreComponents`.SimpleText2
 import com.example.jetpackcomposecourse.`4_LayoutComposables`.LazyRowSample
@@ -29,9 +30,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 //        enableEdgeToEdge()
         setContent {
-
-
-
 
 
 //                FillButtonSample()
@@ -51,10 +49,8 @@ class MainActivity : ComponentActivity() {
 //                ColorBox()
 //                SnackBarSample()
 //            ColumnExample()
-            LazyColumnExample()
-
-
-
+//            LazyColumnExample()
+            SimpleAnimation()
 
 
         }
